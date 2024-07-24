@@ -1,13 +1,15 @@
-let canvas = document.querySelector("#main-container");
+let canvas = document.createElement("div");
+canvas.setAttribute("id", "container");
+document.body.appendChild(canvas);
 
-let size = prompt("Enter a side size from 2 to 100:");
-size = parseInt(size);
+let side = prompt("Enter a side length from 2 to 100:");
+let size = side**2;
 
-for (i = 0; i < size**2; i++) {
+let pixel_size = canvas.offsetWidth / side;
+
+for (i = 0; i < size; i++) {
     let pixel = document.createElement("div");
     pixel.className = "pixel";
-
-    let pixel_size = canvas.offsetWidth / size;
     pixel.style.width = `${pixel_size}px`;
     pixel.style.height = `${pixel_size}px`;
     canvas.appendChild(pixel);
