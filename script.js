@@ -1,15 +1,14 @@
-const main = document.querySelector("#main-container");
+let canvas = document.querySelector("#main-container");
 
-const size = prompt("Enter a side size from 2 to 100:");
+let size = prompt("Enter a side size from 2 to 100:");
+size = parseInt(size);
 
-for (i = 0; i < size; i++) {
-    const row = document.createElement("div");
-    row.className = "row";
-    main.appendChild(row);
+for (i = 0; i < size**2; i++) {
+    let pixel = document.createElement("div");
+    pixel.className = "pixel";
 
-    for (j = 0; j < size; j++) {
-        const pixel = document.createElement("div");
-        pixel.className = "pixel";
-        row.appendChild(pixel);
-    };
+    let pixel_size = canvas.offsetWidth / size;
+    pixel.style.width = `${pixel_size}px`;
+    pixel.style.height = `${pixel_size}px`;
+    canvas.appendChild(pixel);
 };
