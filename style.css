@@ -9,7 +9,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #171717;
+    background-color: #2672f6;
 }
 
 #container {
@@ -17,10 +17,15 @@ body {
     flex-wrap: wrap;
     width: 600px;
     height: 600px;
+    background-color: #ece8e5;
 }
 
 .pixel {
     box-sizing: border-box;
-    background-color: #e9ece5;
-    border: 1px solid #ff7e28;
+    background-color: #ece8e5;
+    border: 1px solid #2672f6;
+}
+
+.painted {
+    background-color: #ff9c12;
 }
