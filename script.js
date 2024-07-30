@@ -4,10 +4,10 @@ const rainbow = document.querySelector("#checkbox-btn input");
 
 let rainbowMode = false;
 
-let side;
-while (!side) {
+let side = 0;
+while (side < 1 || side > 100) {
     side = prompt("Enter a side length from 1 to 100:");
-    if (side >= 1 && side <= 100) break;
+    if (side === "0") side = 0;
 };
 
 const canvas_size = side**2;
