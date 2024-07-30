@@ -12,23 +12,50 @@ body {
     background-color: #2672f6;
 }
 
+/* Buttons container */
 .buttons {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-evenly;
 }
 
-button {
-    color: black;
+/* Buttons stylization */
+
+#clear,
+#rainbow {
+    color: #3c3c3c;
     background-color: #ece8e5;
-    width: 100px;
     padding: 5px;
-    border-radius: 10%;
+    border: none;
+	border-radius: 5px;
     font-size: 14px;
     font-weight: 400;
+    cursor: pointer;
+    font-family: 'Gill Sans', Calibri, sans-serif;
+    user-select: none;
 }
 
+#clear:hover,
+#rainbow:hover {
+	color: #2672f6;
+}
+
+#checkbox-btn input[type=checkbox] {
+    display: none;
+}
+
+#checkbox-btn input[type=checkbox]:checked + #rainbow {
+	background-color: #ff9c12;
+}
+
+/* Drawing canvas container */
 #container {
+    background-color: #ff9c12;
+    padding: 3px;
+}
+
+/* Canvas itself */
+#canvas {
     display: flex;
     flex-wrap: wrap;
     width: 600px;
@@ -36,11 +63,11 @@ button {
     background-color: #ece8e5;
 }
 
-.blank {
-    box-sizing: border-box;
-    background-color: #ece8e5;
-}
+/* Drawing canvas units */
 
-.painted {
-    background-color: #ff9c12;
+.blank,
+.rainbowed,
+.painted
+ {
+    background-color: inherit;
 }
