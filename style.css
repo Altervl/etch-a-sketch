@@ -7,9 +7,25 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     height: 100vh;
     background-color: #2672f6;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+button {
+    color: black;
+    background-color: #ece8e5;
+    width: 100px;
+    padding: 5px;
+    border-radius: 10%;
+    font-size: 14px;
+    font-weight: 400;
 }
 
 #container {
@@ -20,10 +36,9 @@ body {
     background-color: #ece8e5;
 }
 
-.pixel {
+.blank {
     box-sizing: border-box;
     background-color: #ece8e5;
-    border: 1px solid #2672f6;
 }
 
 .painted {
