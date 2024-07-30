@@ -2,6 +2,8 @@ const canvas = document.querySelector("#canvas");
 const clear = document.querySelector("#clear");
 const rainbow = document.querySelector("#checkbox-btn input");
 
+let rainbowMode = false;
+
 let side;
 while (!side) {
     side = prompt("Enter a side length from 1 to 100:");
@@ -11,9 +13,6 @@ while (!side) {
 const canvas_size = side**2;
 
 const blank_size = canvas.offsetWidth / side;
-
-let rainbowMode = false;
-const colors = ["red", "orange", "yellow", "green", "skyblue", "blue", "indigo"];
 
 for (i = 1; i <= canvas_size; i++) {
     const blank = document.createElement("div");

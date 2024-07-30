@@ -23,29 +23,37 @@ body {
 
 #clear,
 #rainbow {
-    color: #3c3c3c;
+    color: #2672f6;
     background-color: #ece8e5;
     padding: 5px;
     border: none;
 	border-radius: 5px;
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 700;
     cursor: pointer;
     font-family: 'Gill Sans', Calibri, sans-serif;
     user-select: none;
 }
 
+#checkbox-btn input[type=checkbox]:checked + #rainbow,
+#clear:hover:active {
+    color: #ece8e5;
+    background-color: #2672f6;
+    border: 3px solid #ece8e5;
+}
+
 #clear:hover,
 #rainbow:hover {
-	color: #2672f6;
+    color: #2672f6;
+    border: 3px solid #ff9c12;
+}
+
+#checkbox-btn input[type=checkbox]:checked:hover + #rainbow {
+    border: 3px solid #ff9c12;
 }
 
 #checkbox-btn input[type=checkbox] {
     display: none;
-}
-
-#checkbox-btn input[type=checkbox]:checked + #rainbow {
-	background-color: #ff9c12;
 }
 
 /* Drawing canvas container */
