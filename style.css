@@ -65,6 +65,7 @@ body {
 /* Canvas itself */
 #canvas {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     width: 600px;
     height: 600px;

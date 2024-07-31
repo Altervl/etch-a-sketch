@@ -10,16 +10,22 @@ while (side < 1 || side > 100) {
     if (side === "0") side = 0;
 };
 
-const canvas_size = side**2;
+for (i = 1; i <= side; i++) {
+    const row = document.createElement("div");
+    row.className = "blank";
+    row.style.display = "flex";
+    row.style.width = `${canvas.offsetWidth}px`;
+    row.style.height = `${canvas.offsetHeight / side}px`;
+    row.style.flexDirection = "row";
+    row.style.flexWrap = "wrap";
+    canvas.appendChild(row);
 
-const blank_size = canvas.offsetWidth / side;
-
-for (i = 1; i <= canvas_size; i++) {
-    const blank = document.createElement("div");
-    blank.className = "blank";
-    blank.style.width = `${blank_size}px`;
-    blank.style.height = `${blank_size}px`;
-    canvas.appendChild(blank);
+    for (j = 1; j <= side; j++) {
+        const blank = document.createElement("div");
+        blank.className = "blank";
+        blank.style.width = `${row.offsetWidth / side}px`;
+        row.appendChild(blank);
+    };
 };
 
 canvas.addEventListener("mouseover", (event) => {
@@ -49,8 +55,10 @@ rainbow.addEventListener("change", () => {
 });
 
 clear.addEventListener("click", () => {
-    for (const child of canvas.children) {
-        child.className = "blank";
-        child.style.backgroundColor = "#ece8e5";
+    for (const row of canvas.children) {
+        for (const blank of row.children) {
+            blank.className = "blank";
+            blank.style.backgroundColor = "#ece8e5";
+        };
     };
 });
