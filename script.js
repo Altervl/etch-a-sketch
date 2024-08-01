@@ -1,30 +1,36 @@
 const canvas = document.querySelector("#canvas");
 const clear = document.querySelector("#clear");
 const rainbow = document.querySelector("#checkbox-btn input");
+const side = document.querySelector("input[type=range]");
+
+rainbow.checked = false;
+
+side.value = 10;
 
 let rainbowMode = false;
 
-let side = 0;
-while (side < 1 || side > 100) {
-    side = prompt("Enter a side length from 1 to 100:");
-    if (side === "0") side = 0;
-};
+let canvas_size = side.value ** 2;
+let blank_size = canvas.offsetWidth / Math.sqrt(canvas_size);
 
-const canvas_size = side**2;
+renderCanvas(canvas_size, blank_size);
 
-const blank_size = canvas.offsetWidth / side;
+function renderCanvas() {
+    while (canvas.firstChild) {
+        canvas.removeChild(canvas.firstChild);
+    };
 
-for (i = 1; i <= canvas_size; i++) {
-    const blank = document.createElement("div");
-    blank.className = "blank";
-    blank.style.width = `${blank_size}px`;
-    blank.style.height = `${blank_size}px`;
-    canvas.appendChild(blank);
+    for (i = 1; i <= canvas_size; i++) {
+        const blank = document.createElement("div");
+        blank.className = "blank";
+        blank.style.width = `${blank_size}px`;
+        blank.style.height = `${blank_size}px`;
+        canvas.appendChild(blank);
+    };
 };
 
 canvas.addEventListener("mouseover", (event) => {
+    event.preventDefault();
     const target = event.target;
-
     if (rainbowMode === true) {
         target.className = "rainbowed";
         let color = `${Math.round(Math.random() * 255)}, ${Math.round(Math.random() * 255)}, ${Math.round(Math.random() * 255)}`;
@@ -53,4 +59,11 @@ clear.addEventListener("click", () => {
         child.className = "blank";
         child.style.backgroundColor = "#ece8e5";
     };
+});
+
+side.addEventListener("input", () => {
+    side.nextElementSibling.innerText = side.value;
+    canvas_size = side.value ** 2;
+    blank_size = canvas.offsetWidth / Math.sqrt(canvas_size);
+    renderCanvas();
 });

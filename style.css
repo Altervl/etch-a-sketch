@@ -1,3 +1,5 @@
+/* General styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -12,21 +14,22 @@ body {
     background-color: #2672f6;
 }
 
-/* Buttons container */
+/* Buttons styles */
+
 .buttons {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    align-items: center;
 }
 
-/* Buttons stylization */
-
-#clear,
-#rainbow {
+#rainbow,
+#range-area,
+#clear {
     color: #2672f6;
     background-color: #ece8e5;
     padding: 5px;
-    border: none;
+    border: 3px solid;
 	border-radius: 5px;
     font-size: 14px;
     font-weight: 700;
@@ -56,26 +59,78 @@ body {
     display: none;
 }
 
-/* Drawing canvas container */
+/* Range styles */
+
+#range-area {
+    display: inline-flex;
+    padding-bottom: 4px;
+    gap: 5px;
+}
+
+#range-area:hover {
+    border: 3px solid #ff9c12;
+}
+
+#range-area:active {
+    color: #ece8e5;
+    background-color: #2672f6;
+    border: 3px solid #ece8e5;
+}
+
+#range-area input[type="range"] {
+    width: 100px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+/** Track **/
+/*** Chrome, Safari, Opera, and Edge Chromium ***/
+#range-area input[type="range"]::-webkit-slider-runnable-track {
+    background: #ff9c12;
+    height: 3px;
+}
+  
+/*** Firefox ***/
+input[type="range"]::-moz-range-track {
+    background: #ff9c12;
+    height: 3px;
+}
+
+/** Thumb **/
+/*** Chrome, Safari, Opera, and Edge Chromium ***/
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    margin-top: -12px; /* Centers thumb on the track */
+    background-color: #ece8e5;
+    height: 14px;
+    width: 14px;
+ }
+
+/*** Firefox ***/
+input[type="range"]::-moz-range-thumb {
+    background-color: #ece8e5;
+    height: 14px;
+    width: 14px;
+    border: 3px solid #ff9c12;
+}
+
+/* Canvas styles */
+
+/** Drawing canvas container **/
 #container {
     background-color: #ff9c12;
     padding: 3px;
 }
 
-/* Canvas itself */
+/** Canvas itself **/
 #canvas {
     display: flex;
     flex-wrap: wrap;
     width: 600px;
     height: 600px;
     background-color: #ece8e5;
-}
-
-/* Drawing canvas units */
-
-.blank,
-.rainbowed,
-.painted
- {
-    background-color: inherit;
 }
