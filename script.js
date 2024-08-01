@@ -29,7 +29,6 @@ function renderCanvas() {
 };
 
 canvas.addEventListener("mouseover", (event) => {
-    event.preventDefault();
     const target = event.target;
     if (rainbowMode === true) {
         target.className = "rainbowed";
