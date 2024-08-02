@@ -53,7 +53,7 @@ canvas.addEventListener("mousedown", (event) => {
     event.button === 0 ? drawMode = true : drawMode = false;
 });
 
-canvas.addEventListener("mouseup", (event) => {
+document.addEventListener("mouseup", (event) => {
     if (event.button === 0) {
         drawMode = false;
     };
