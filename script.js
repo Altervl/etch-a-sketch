@@ -7,10 +7,11 @@ rainbow.checked = false;
 
 side.value = 10;
 
+let drawMode = false;
 let rainbowMode = false;
 
 let canvas_size = side.value ** 2;
-let blank_size = canvas.offsetWidth / Math.sqrt(canvas_size);
+let blank_size = canvas.offsetWidth / side.value;
 
 renderCanvas(canvas_size, blank_size);
 
@@ -28,21 +29,38 @@ function renderCanvas() {
     };
 };
 
-canvas.addEventListener("mouseover", (event) => {
+function draw(event) {
     const target = event.target;
-    if (rainbowMode === true) {
-        target.className = "rainbowed";
-        let color = `${Math.round(Math.random() * 255)}, ${Math.round(Math.random() * 255)}, ${Math.round(Math.random() * 255)}`;
-        target.style.backgroundColor = `rgb(${color})`;
-    } else {
-        if (target.className === "blank" || target.className === "rainbowed") {
-            target.className = "painted";
-            target.style.backgroundColor = "#6fe911";
-            target.style.opacity = "0.5";
+    if (drawMode === true) {
+        if (rainbowMode === true) {
+            target.className = "rainbowed";
+            let color = `${Math.round(Math.random() * 255)}, ${Math.round(Math.random() * 255)}, ${Math.round(Math.random() * 255)}`;
+            target.style.backgroundColor = `rgb(${color})`;
         } else {
-            target.style.opacity -= "-0.05"; // "+=" tries to process values as stings
+            if (target.className === "blank" || target.className === "rainbowed") {
+                target.className = "painted";
+                target.style.backgroundColor = "#6fe911";
+                target.style.opacity = "0.5";
+            } else {
+                target.style.opacity -= "-0.05"; // "+=" tries to process values as stings
+            };
         };
     };
+};
+
+canvas.addEventListener("mousedown", (event) => {
+    event.preventDefault();
+    event.button === 0 ? drawMode = true : drawMode = false;
+});
+
+canvas.addEventListener("mouseup", (event) => {
+    if (event.button === 0) {
+        drawMode = false;
+    };
+});
+
+canvas.addEventListener("mouseover", (event) => {
+    draw(event);
 });
 
 rainbow.addEventListener("change", () => {
